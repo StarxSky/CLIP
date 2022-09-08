@@ -366,7 +366,11 @@ class CLIP(nn.Module):
         # cosine similarity as logits
         logit_scale = self.logit_scale.exp()
         logits_per_image = logit_scale * image_features @ text_features.t()
+        #
+        print(f'logits_per_image shape:  {logits_per_image.shape}')
         logits_per_text = logits_per_image.t()
+        #
+        print(f'logits_per_text shape:  {logits_per_text.shape}')
 
         # shape = [global_batch_size, global_batch_size]
         return logits_per_image, logits_per_text
