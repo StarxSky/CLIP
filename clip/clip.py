@@ -1,17 +1,17 @@
-import hashlib
 import os
+import torch
 import urllib
+import hashlib
 import warnings
+
+
+from PIL import Image
+from tqdm import tqdm
+from .model import build_model
 from typing import Any, Union, List
 from pkg_resources import packaging
-
-import torch
-from PIL import Image
-from torchvision.transforms import Compose, Resize, CenterCrop, ToTensor, Normalize
-from tqdm import tqdm
-
-from .model import build_model
 from .simple_tokenizer import SimpleTokenizer as _Tokenizer
+from torchvision.transforms import Compose, Resize, CenterCrop, ToTensor, Normalize
 
 try:
     from torchvision.transforms import InterpolationMode
